@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#B5E6DB"
+    android:backgroundTint="#2B2D30"
+    android:fitsSystemWindows="true"
+    tools:context=".MainActivity">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#B6E7DC"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#5DA3BD" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#B6E7DC"
+        android:fillViewport="true"
+        android:scrollbars="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/transcode_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="5dp"
+                android:background="#B6E7DC"
+                tools:layout_editor_absoluteX="10dp">
+
+                <TextView
+                    android:id="@+id/transcode_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginEnd="20dp"
+                    android:text="Transcoder"
+                    android:textColor="#5C9DB6"
+                    android:textSize="20sp"
+                    android:textStyle="bold|italic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/browse_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="40dp"
+                    android:text="@string/browse_files"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/transcode_header" />
+
+                <TextView
+                    android:id="@+id/selected_video_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/no_file_selected"
+                    android:textColor="#090808"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/spacer_2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/browse_btn" />
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="19dp"
+                    android:layout_marginTop="45dp"
+                    android:layout_marginEnd="12dp"
+                    android:text="Target Video Mime:"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@id/spacer_2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/selected_video_text" />
+
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="19dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="12dp"
+                    android:text="Target Audio Mime:"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@id/spacer_2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/textView15" />
+
+                <Space
+                    android:id="@+id/spacer_2"
+                    android:layout_width="3dp"
+                    android:layout_height="54dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="5dp"
+                    app:layout_constraintEnd_toStartOf="@+id/target_video_spinner"
+                    app:layout_constraintStart_toEndOf="@+id/textView15"
+                    app:layout_constraintTop_toTopOf="@id/selected_video_text" />
+
+                <Spinner
+                    android:id="@+id/target_video_spinner"
+                    android:layout_width="140dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="19dp"
+                    android:layout_marginTop="30dp"
+                    app:layout_constraintStart_toStartOf="@id/spacer_2"
+                    app:layout_constraintTop_toTopOf="@id/selected_video_text" />
+
+                <Spinner
+                    android:id="@+id/target_audio_spinner"
+                    android:layout_width="140dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="19dp"
+                    android:layout_marginTop="30dp"
+                    app:layout_constraintStart_toStartOf="@id/spacer_2"
+                    app:layout_constraintTop_toTopOf="@id/target_video_spinner" />
+
+                <Button
+                    android:id="@+id/transcode_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:text="Transcode"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/spacer_2" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/codec_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="5dp"
+                android:background="#B6E7DC"
+                app:layout_constraintTop_toBottomOf="@id/transcode_layout"
+                tools:layout_editor_absoluteX="5dp">
+
+                <Spinner
+                    android:id="@+id/codec_spinner"
+                    android:layout_width="296dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="19dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="96dp"
+                    android:layout_marginBottom="551dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="19dp"
+                    android:layout_marginTop="23dp"
+                    android:text="@string/has_encoder"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/codec_spinner" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="19dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/is_hardware_accelerated"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="19dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/supported_types"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="19dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/software_only"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="19dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/provider"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+                <Space
+                    android:id="@+id/space"
+                    android:layout_width="1dp"
+                    android:layout_height="151dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="88dp"
+                    app:layout_constraintStart_toEndOf="@+id/textView3"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/is_encoder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="23dp"
+                    android:text="@string/textview"
+                    android:textColor="#000000"
+                    app:layout_constraintStart_toEndOf="@+id/space"
+                    app:layout_constraintTop_toBottomOf="@+id/codec_spinner" />
+
+                <TextView
+                    android:id="@+id/is_hardware"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/textview"
+                    android:textColor="#000000"
+                    app:layout_constraintStart_toEndOf="@+id/space"
+                    app:layout_constraintTop_toBottomOf="@+id/is_encoder" />
+
+                <TextView
+                    android:id="@+id/provider"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="9dp"
+                    android:text="@string/textview"
+                    android:textColor="#000000"
+                    app:layout_constraintStart_toEndOf="@+id/space"
+                    app:layout_constraintTop_toBottomOf="@+id/software" />
+
+                <TextView
+                    android:id="@+id/supported_types"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/textview"
+                    android:textColor="#000000"
+                    app:layout_constraintStart_toEndOf="@+id/space"
+                    app:layout_constraintTop_toBottomOf="@+id/is_hardware" />
+
+                <TextView
+                    android:id="@+id/software"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/textview"
+                    android:textColor="#000000"
+                    app:layout_constraintStart_toEndOf="@+id/space"
+                    app:layout_constraintTop_toBottomOf="@+id/supported_types" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginEnd="20dp"
+                    android:text="Device Supported Codecs"
+                    android:textColor="#5C9DB6"
+                    android:textSize="20sp"
+                    android:textStyle="bold|italic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.Barrier
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="639dp"
+                    app:barrierDirection="top"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Space
+                    android:id="@+id/transcode_splitter"
+                    android:layout_width="374dp"
+                    android:layout_height="0dp"
+                    tools:layout_editor_absoluteX="14dp"
+                    tools:layout_editor_absoluteY="256dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+    <!--    </com.google.android.material.appbar.AppBarLayout>-->
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
